@@ -36,15 +36,15 @@ const messageComp = (props) => {
 
 	return (
 		<form onSubmit={handleSubmit}>
-		<div style={{display: "flex"}}>
+		<div className='flex justify-center items-center'>
 		<input
 		  placeholder="Kirim kan teks..."
 		  type='text'
-		  style={{color: 'white'}}
 		  value={value}
 		  onChange={((e) => setValue(e.target.value))}
+		  className='px-6 py-2 bg-[#f8f8f8] outline-none border-none rounded-lg shadow-lg'
 		/>
-		<button type="submit">Submit</button>
+		<button type="submit" className='bg-[#f8f8f8] py-2 px-5 shadow-lg ml-3 rounded-lg hover:bg-[#eee]'>Submit</button>
 		</div>
 		</form>
 	)

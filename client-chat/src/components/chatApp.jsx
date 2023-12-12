@@ -53,6 +53,7 @@ const RoomComp = () => {
   };
 
   const handleChange = (e) => {
+    e.preventDefault()
     setData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
@@ -75,42 +76,50 @@ const RoomComp = () => {
 
 
   return (
-    <div>
+    <div className='relative w-[400px] text-center  bg-[#fff] rounded-xl shadow-lg font-Quick font-bold px-10 py-5'>
       <form onSubmit={handleSubmit}>
-        <div>
-          <label>Username</label>
+        <div className='flex flex-col my-6'>
+          <label className='text-left'>Username</label>
           <input
             type="text"
             name="username"
             value={data.username}
             onChange={handleChange}
+            autoComplete="off"
+            placeholder='Masukkan Username'
+            className='text-sm font-normal bg-white outline-none border-none rounded-lg shadow-lg w-[90%] mx-auto py-3 bg-[#f8f8f8] px-3'
           />
         </div>
-        <div>
-          <label>Room</label>
+        <div className='flex flex-col my-6'>
+          <label className='text-left'>Room</label>
           <input
             type="text"
             name="room"
             value={data.room}
             onChange={handleChange}
+            autoComplete="off"
+            placeholder='Masukkan Room'
+            className='text-sm font-normal bg-white outline-none border-none rounded-lg shadow-lg w-[90%] mx-auto py-3 bg-[#f8f8f8] px-3'
           />
         </div>
         <div>
-          <button type="submit">Submit</button>
+          <button type="submit" className='bg-[#f8f8f8] py-2 px-5 shadow-lg mb-5 hover:bg-[#eee]'>Submit</button>
         </div>
       </form>
       {users && 
-      <ul>
+      <ul className='mb-5'>
         {users.map(user => (
           <li key={user.userID}><a href="#" data-id={user.userID} onClick={handleClick}>{user.username}</a></li>
         ))}
       </ul>
       }
-      <button onClick={handleCheck}>All users</button>
+      <button onClick={handleCheck} className='bg-[#f8f8f8] py-2 px-5 shadow-lg mb-5 hover:bg-[#eee]'>All users</button>
       {show && privateID == false ? <MessageComp users={users} /> : ''}
       {privateID && show == false ? <PrivateMsg userid={userIDPrivate} /> : ''}
     </div>
   )
 }
+
+
 
 export default RoomComp;
